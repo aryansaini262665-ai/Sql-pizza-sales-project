@@ -1,0 +1,17 @@
+-- Determine the top 3 most ordered pizza types based on revenue.
+SELECT 
+    pizza_types.name,
+    ROUND(SUM(order_details.quantity * pizzas.price),
+            2) AS REVENUE
+FROM
+    pizza_types
+        JOIN
+    pizzas ON pizzas.pizza_type_id = pizza_types.pizza_type_id
+        JOIN
+    order_details ON order_details.pizaa_id = pizzas.pizza_id
+GROUP BY pizza_types.name
+ORDER BY REVENUE DESC
+LIMIT 3;
+
+
+
